@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/counter_provider.dart';
+
 /* to use provider package
   1. ChangeNotifier
   2. ChangeNotifierProvider
   3. consumer
  */
-
-class Counter extends ChangeNotifier {
-  int _count = 0;
-
-  int get count => _count;
-
-  void increment() {
-    _count += 1;
-    notifyListeners();
-  }
-}
 
 class CounterScreen extends StatelessWidget {
   final String title;
@@ -51,14 +42,14 @@ class CounterScreen extends StatelessWidget {
 class CounterText extends StatelessWidget {
   @override
   Widget build(BuildContext ctx) {
-    int count = ctx.watch<Counter>().count;
-
-    return Consumer<Counter>(builder: (ctx, data, child) {
-      return Text(
-        '${data.count}',
-        style: Theme.of(ctx).textTheme.headline4,
-      );
-    });
+    return Consumer<Counter>(
+      builder: (ctx, data, child) {
+        return Text(
+          '${data.count}',
+          style: Theme.of(ctx).textTheme.headline4,
+        );
+      },
+    );
   }
 }
 
