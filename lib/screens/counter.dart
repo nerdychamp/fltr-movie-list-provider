@@ -22,8 +22,8 @@ class CounterScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
+          children: const <Widget>[
+            Text(
               'You have pushed the button this many times:',
             ),
             CounterText(),
@@ -40,6 +40,8 @@ class CounterScreen extends StatelessWidget {
 }
 
 class CounterText extends StatelessWidget {
+  const CounterText({super.key});
+
   @override
   Widget build(BuildContext ctx) {
     return Consumer<Counter>(
